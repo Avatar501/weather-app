@@ -14,7 +14,6 @@ function App() {
     error: false,
   });
   const [favorites, setFavorites] = useState(() => {
-    // Récupérer les favoris depuis localStorage lors du premier rendu
     const savedFavorites = localStorage.getItem('favorites');
     return savedFavorites ? JSON.parse(savedFavorites) : [];
   });
@@ -76,10 +75,8 @@ function App() {
   
   
 
-  // Fonction pour sauvegarder une ville dans les favoris
   const saveToFavorites = () => {
     if (weather.data.name) {
-      // Vérifier si la ville est déjà dans les favoris
       if (!favorites.includes(weather.data.name)) {
         const updatedFavorites = [...favorites, weather.data.name];
         setFavorites(updatedFavorites);
@@ -93,7 +90,6 @@ function App() {
   };
   
 
-  // Fonction pour supprimer une ville des favoris
   const removeFromFavorites = (city) => {
     const updatedFavorites = favorites.filter(fav => fav !== city);
     setFavorites(updatedFavorites);
@@ -102,7 +98,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1 className="app-name">Application Météo grp203</h1>
+      <h1 className="app-name">Application Météo</h1>
       <div className="search-bar">
       <input
   type="text"
